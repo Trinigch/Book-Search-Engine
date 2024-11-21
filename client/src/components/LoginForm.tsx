@@ -10,7 +10,7 @@ const LoginForm = ({ handleModalClose }: { handleModalClose: () => void }) => {
     username: '',
     email: '',
     password: '',
-    savedBooks: [],
+  //  savedBooks: [],
   });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -57,7 +57,7 @@ const LoginForm = ({ handleModalClose }: { handleModalClose: () => void }) => {
       username: '',
       email: '',
       password: '',
-      savedBooks: [],
+    //  savedBooks: [],
     });
   };
 
