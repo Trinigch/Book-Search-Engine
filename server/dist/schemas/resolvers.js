@@ -20,16 +20,16 @@ const resolvers = {
             if (!context.user) {
                 throw new AuthenticationError('Not authenticated.');
             }
-            try {
-                const updatedUser = await User.findByIdAndUpdate(context.user._id, { $addToSet: { savedBooks: input } }, { new: true, runValidators: true });
-                if (!updatedUser) {
-                    throw new Error('Failed to save the book.');
-                }
-                return updatedUser;
+            // try {
+            const updatedUser = await User.findByIdAndUpdate(context.user._id, { $addToSet: { savedBooks: input } }, { new: true, runValidators: true });
+            if (!updatedUser) {
+                throw new Error('Failed to save the book.');
             }
-            catch (err) {
-                throw new Error('Error while saving book.');
-            }
+            return updatedUser;
+            //     }
+            /* catch (err) {
+              throw new Error('Error while saving book.');
+            }*/
         },
         removeBook: async (_parent, { bookId }, context) => {
             if (!context.user) {

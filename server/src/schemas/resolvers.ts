@@ -53,7 +53,7 @@ const resolvers = {
       if (!context.user) {
         throw new AuthenticationError('Not authenticated.');
       }
-      try {
+     // try {
         const updatedUser = await User.findByIdAndUpdate(
           context.user._id,
           { $addToSet: { savedBooks: input } },
@@ -63,9 +63,10 @@ const resolvers = {
           throw new Error('Failed to save the book.');
         }
         return updatedUser as UserType;
-      } catch (err) {
+ //     }
+      /* catch (err) {
         throw new Error('Error while saving book.');
-      }
+      }*/
     },
     removeBook: async (_parent: any, { bookId }: RemoveBookArgs, context: Context): Promise<UserType | null> => {
       if (!context.user) {
