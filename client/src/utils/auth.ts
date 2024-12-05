@@ -10,13 +10,17 @@ interface UserToken {
 class AuthService {
   // get user data
   getProfile() {
-    return jwtDecode(this.getToken() || '');
+   // return jwtDecode(this.getToken() || '');
+   const token = this.getToken();
+ //  console.log('Decoded Profile:', jwtDecode(token || ''));
+   return jwtDecode(token || '');
   }
 
   // check if user's logged in
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken();
+
     return !!token && !this.isTokenExpired(token); // handwaiving here
   }
 
@@ -36,7 +40,10 @@ class AuthService {
 
   getToken() {
     // Retrieves the user token from localStorage
-    return localStorage.getItem('id_token');
+    const token = localStorage.getItem('id_token');
+//    console.log('Retrieved token:', token);
+    return token;
+ //   return localStorage.getItem('id_token');
   }
 
   login(idToken: string) {

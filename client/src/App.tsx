@@ -1,11 +1,6 @@
 import './App.css';
 import { Outlet } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+import {  ApolloClient,  InMemoryCache,  ApolloProvider,  createHttpLink,} from '@apollo/client';
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -19,6 +14,7 @@ import Navbar from './components/Navbar';
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
+  console.log("********",localStorage.getItem('id_token'));
   // return the headers to the context so httpLink can read them
   return {
     headers: {
